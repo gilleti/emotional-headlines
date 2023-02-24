@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- Start: ui/src/webapp/WEB-INF/jsp/commons/no-selected-documents.jsp -->
+
+<!-- Start: WEB-INF/jsp/commons/includes/taglibs.jsp -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- End: WEB-INF/jsp/commons/includes/taglibs.jsp -->
+
+<html>
+	<head>
+		<!-- Start: ui/src/webapp/WEB-INF/tags/meta.tag -->
+
+
+<!-- Start: WEB-INF/jsp/commons/includes/taglibs.jsp -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- End: WEB-INF/jsp/commons/includes/taglibs.jsp -->
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Description" content="Retriever UI" />
+<meta name="robots" content="noindex, nofollow" />
+
+
+<meta name="format-detection" content="telephone=no" />
+
+
+<meta name="application-name" content="Retriever"/>
+<meta name="msapplication-TileColor" content="#F5F5F5"/>
+<meta name="msapplication-TileImage" content="/static/gfx/logo/7b76e067-91f9-4ecb-a60a-28d0d63ea0a7.png"/>
+<meta name="referrer" content="origin">
+<meta http-equiv="cache-control" content="Public" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=contain">
+<meta name="apple-itunes-app" content="app-id=447072724">
+<meta name="theme-color" content="#6ea5c3">
+
+
+<!-- End: ui/src/webapp/WEB-INF/tags/meta.tag -->
+
+		<title>Retriever</title>
+		
+		<!-- Start: ui/src/webapp/WEB-INF/tags/includeResources.tag -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    (function() {
+        /* IE10 mobile hack. Scales window to fit the device */
+        if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(
+                document.createTextNode("@-ms-viewport{width:auto!important}")
+            );
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    })();
+</script>
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+        var fontSizeClass = 'font-size-'+3;
+
+        if ( document.documentElement.classList ) // IE
+            document.documentElement.classList.add(fontSizeClass);
+        else
+            document.documentElement.className += ' '+fontSizeClass
+	</script>
+	
+
+	<!-- preconnect to important resources -->
+	<link href="https://perfalytics.com" rel="preconnect" crossorigin />
+	<link rel="preconnect" href="https://fonts-googleapis-com.ez.hhs.se"/>
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+	<link rel="preconnect" href="https://fonts-gstatic-com.ez.hhs.se"/>
+	<link rel="preconnect" href="https://fonts-googleapis-com.ez.hhs.se"/>
+	<link rel="preconnect" href="https://www-google-analytics-com.ez.hhs.se"/>
+	<link rel="preconnect" href="https://api-iam.intercom.io"/>
+	<link rel="preconnect" href="https://js.intercomcdn.com"/>
+	<link rel="preconnect" href="https://widget.intercom.io"/>
+
+
+	
+	<link href='//fonts-googleapis-com.ez.hhs.se/css?family=Roboto:100,300,300italic,400,400italic,500,700,900' rel='stylesheet' type='text/css'>
+	<link href='//fonts-googleapis-com.ez.hhs.se/css?family=Roboto+Slab:300,700,400' rel='stylesheet' type='text/css'>
+	<link href='//fonts-googleapis-com.ez.hhs.se/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+	
+	<link href='/static/src/assets/fonts/roboto/roboto.css' rel='stylesheet' type='text/css'>
+	<link href='/static/src/assets/fonts/roboto-slab/robotoSlab.css' rel='stylesheet' type='text/css'>
+
+	
+	<script type="text/javascript" data-pace-options='{"ajax":{"trackMethods":["GET","POST"]}}' src="/static/3rdParty/pace/pace.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/3rdParty/pace/pace.css" />
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.2.201711092/classList.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.10/es5-shim.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/es7-shim/6.0.0/es7-shim.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js"></script>
+
+
+	
+		<script type="text/javascript">
+			var APP_ID = "ehfw37eb";
+			window.intercomSettings = {
+				app_id: APP_ID
+			};
+			(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + APP_ID;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+		</script>
+	
+	
+
+	<!-- Freshpaint Tracking Code for https://web-retriever-info-com.ez.hhs.se -->
+	
+    <script type="text/javascript">
+			// issues with integrating freshpaint on business personpage and vehicles
+	      if (window.location.pathname.indexOf('personreg') === -1 &&
+				  window.location.pathname.indexOf('fastighet') === -1 &&
+				  window.location.pathname.indexOf('vehicles') === -1 &&
+				  window.location.hostname.indexOf('retriever-info.com') >= 0
+      ) {
+      (function (f, a) {
+        if (!a.__SV) {
+          var b = window;
+          try {
+            var d,
+              m,
+              j,
+              k = b.location,
+              c = k.hash;
+            d = function (a, b) {
+              return (m = a.match(RegExp(b + '=([^&]*)'))) ? m[1] : null;
+            };
+            c &&
+              d(c, 'state') &&
+              ((j = JSON.parse(decodeURIComponent(d(c, 'state')))),
+              'mpeditor' === j.action &&
+                (b.sessionStorage.setItem('_mpcehash', c),
+                history.replaceState(
+                  j.desiredHash || '',
+                  f.title,
+                  k.pathname + k.search,
+                )));
+          } catch (n) {}
+          var l, h;
+          window.freshpaint = a;
+          a._i = [];
+          a.init = function (b, d, g) {
+            function c(b, i) {
+              var a = i.split('.');
+              2 == a.length && ((b = b[a[0]]), (i = a[1]));
+              b[i] = function () {
+                b.push([i].concat(Array.prototype.slice.call(arguments, 0)));
+              };
+            }
+            var e = a;
+            'undefined' !== typeof g ? (e = a[g] = []) : (g = 'freshpaint');
+            e.people = e.people || [];
+            e.toString = function (b) {
+              var a = 'freshpaint';
+              'freshpaint' !== g && (a += '.' + g);
+              b || (a += ' (stub)');
+              return a;
+            };
+            e.people.toString = function () {
+              return e.toString(1) + '.people (stub)';
+            };
+            l = 'disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove people group page alias ready'.split(
+              ' ',
+            );
+            for (h = 0; h < l.length; h++) c(e, l[h]);
+            var f = 'set set_once union unset remove delete'.split(' ');
+            e.get_group = function () {
+              function a(c) {
+                b[c] = function () {
+                  call2_args = arguments;
+                  call2 = [c].concat(Array.prototype.slice.call(call2_args, 0));
+                  e.push([d, call2]);
+                };
+              }
+              for (
+                var b = {},
+                  d = ['get_group'].concat(
+                    Array.prototype.slice.call(arguments, 0),
+                  ),
+                  c = 0;
+                c < f.length;
+                c++
+              )
+                a(f[c]);
+              return b;
+            };
+            a._i.push([b, d, g]);
+          };
+          a.__SV = 1.4;
+          b = f.createElement('script');
+          b.type = 'text/javascript';
+          b.async = !0;
+          b.src =
+            'undefined' !== typeof FRESHPAINT_CUSTOM_LIB_URL
+              ? FRESHPAINT_CUSTOM_LIB_URL
+              : '//perfalytics.com/static/js/freshpaint.js';
+          d = f.getElementsByTagName('script')[0];
+          d.parentNode.insertBefore(b, d);
+        }
+      })(document, window.freshpaint || []);
+      freshpaint.init('6bb9a54b-2fa6-4339-8418-5ef1552c5364');
+    	freshpaint.page();
+		}
+    </script>
+       
+	<script type="text/javascript">
+		if (!window.messages) {
+			messages = {
+				'ui.copyright.agree.missing' : 'Du måste acceptera upphovsrättsavtalet'
+			};
+		}
+		window._sid = '975';
+	</script>
+    
+
+	
+	<link href="/static/gfx/icons/favicon.ico" rel="SHORTCUT ICON" />
+	<link href="/static/gfx/logo/retriever_ios.png" rel="apple-touch-icon"/>
+	
+	
+	
+
+	<div class="print-div"><b>&nbsp;</b><h1>&nbsp;</h1></div>
+
+	
+	
+
+	
+	
+
+	
+	
+		
+		
+		
+		
+			
+			
+			
+				
+			
+			<link rel="stylesheet" type="text/css" media="all" href="/static/load.php?file=/static/dist/bootstrap.css,/static/dist/jquery.fancybox.css,/static/dist/classic.css,/static/dist/classic.date.css,/static/dist/sprites.css,/static/dist/main.css,/static/dist/calendar.css,/static/src/assets/css/commons/popup.css,/static/dist/standard.css&amp;bc=1677111232982" />
+			
+		
+
+	
+
+
+
+
+
+<!-- End: ui/src/webapp/WEB-INF/tags/includeResources.tag -->
+	</head>
+	<body onload="javascript:this.focus();">
+		<!-- Start: ui/src/webapp/WEB-INF/tags/drawPopupHeader.tag -->
+
+
+
+
+
+
+
+
+<div id="header" style="min-width: 340px;">
+	<div id="menus">
+		<div id="SubServicesRow" class="popupHeaderRow row">		
+			<div id="subServices" class="popupHeader top-middle-menu">
+				
+					<span id="popupResultLogo" class="hidden-phone">
+						<img class="retrieverLogo" src="/static/gfx/logo/retrieverMW_trans.png" />
+					</span>
+				
+		    	<div id="loadingSplash">
+					<div id="spinningSquaresG">
+						<div id="spinningSquaresG_1" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_2" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_3" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_4" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_5" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_6" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_7" class="spinningSquaresG">
+						</div>
+						<div id="spinningSquaresG_8" class="spinningSquaresG">
+						</div>
+					</div>
+				</div>
+				<ul id="tabs">
+					<li>
+					<a href="javascript:;"
+						onclick="return false;"
+						 class="selectedBtn">
+						Inga markerade dokument
+					</a>
+				</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- End: ui/src/webapp/WEB-INF/tags/drawPopupHeader.tag -->
+		<div id="content">
+			<div class="appData" id="appData">
+				Inga markerade dokument
+			</div>
+		</div>
+	</body>
+</html>
+<!-- End: ui/src/webapp/WEB-INF/jsp/commons/no-selected-documents.jsp -->
