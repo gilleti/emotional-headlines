@@ -26,7 +26,6 @@ def get_files(dirs):
 # Below are the cleaning functions
 
 
-
 def ungrammatical_quotes(df):
     """ Remove headlines with an uneven number of quote signs as these indicate poor quality headlines.
     Also write the deleted headlines to file for later review.
@@ -63,9 +62,12 @@ def mostly_numbers(df):
         for index, row in df.iterrows():
             headline = str(row["HEADLINE"])
             if row["HEADLINE"].strip().replace(" ", "").isdigit() == True:
-                df.drop(index, inplace=True)
-                s = "mostly numbers: " + headline + "\n"
-                f.write(s)
+                try:
+                    df.drop(index, inplace=True)
+                    s = "mostly numbers: " + headline + "\n"
+                    f.write(s)
+                except KeyError:
+                    continue
     return df
 
 def forbidden_words(df):
@@ -84,9 +86,12 @@ def forbidden_words(df):
         for index, row in df.iterrows():
             headline = row["HEADLINE"]
             if any(forbidden_word in row["HEADLINE"].lower() for forbidden_word in completely_forbidden_words):
-                df.drop(index, inplace=True)
-                s = "forbidden words: " + headline + "\n"
-                f.write(s)
+                try:
+                    df.drop(index, inplace=True)
+                    s = "forbidden words: " + headline + "\n"
+                    f.write(s)
+                except KeyError:
+                    continue
     return df
 
 def tags(df):
@@ -95,9 +100,12 @@ def tags(df):
         for index, row in df.iterrows(): # Find all tag-like headlines
             headline = str(row["HEADLINE"])
             if any(tag in headline.lower() for tag in tag_like_chars):
-                df.drop(index, inplace=True)
-                s = "tag: " + headline + "\n"
-                f.write(s)
+                try:
+                    df.drop(index, inplace=True)
+                    s = "tag: " + headline + "\n"
+                    f.write(s)
+                except KeyError:
+                    continue
     return df
 
 def too_long(df):
@@ -106,9 +114,12 @@ def too_long(df):
         for index, row in df.iterrows(): 
             headline = str(row["HEADLINE"])
             if len(headline.strip().split(' ')) > 15:
-                df.drop(index, inplace=True)
-                s = "too long: " + headline + "\n"
-                f.write(s)
+                try:
+                    df.drop(index, inplace=True)
+                    s = "too long: " + headline + "\n"
+                    f.write(s)
+                except KeyError:
+                    continue
     return df
 
 def too_short(df):
@@ -117,9 +128,12 @@ def too_short(df):
             headline = str(row["HEADLINE"])
             if len(headline.strip().split(' ')):
                 if headline.strip().split(' ')[0].islower():
-                    df.drop(index, inplace=True)
-                    s = "too short: " + headline + "\n"
-                    f.write(s)
+                    try:
+                        df.drop(index, inplace=True)
+                        s = "too short: " + headline + "\n"
+                        f.write(s)
+                    except KeyError:
+                        continue
     return df
 
 def names(df):
@@ -142,9 +156,12 @@ def names(df):
         for index, row in df.iterrows():
             headline = str(row["HEADLINE"])
             if row["regex_pattern_headline_diff"] == 0:
-                df.drop(index, inplace=True)
-                s = "name: " + headline + "\n"
-                f.write(s)
+                try:
+                    df.drop(index, inplace=True)
+                    s = "name: " + headline + "\n"
+                    f.write(s)
+                except KeyError:
+                    continue
     return df
 
 def has_digit(s):
@@ -164,9 +181,12 @@ def obituary(df):
             headline = str(row["HEADLINE"])
             if has_digit(headline):
                 if row['regex_pattern_headline_diff'] == 11:
-                    df.drop(index, inplace=True)
-                    s = "obituary: " + headline + "\n"
-                    f.write(s)
+                    try:
+                        df.drop(index, inplace=True)
+                        s = "obituary: " + headline + "\n"
+                        f.write(s)
+                    except KeyError:
+                        continue
     # TODO() SHould the number really be 11?
     # TODO() This is a time consuming function. Consider re-write.
     return df
@@ -184,29 +204,57 @@ files = get_files(dirs)
 appended_data = []
 
 for file in files:
+    print("Processing file: " + file)
     data = pd.read_excel(file)
     data.dropna(subset=['HEADLINE'], how='all', inplace=True)
     data.drop_duplicates(subset=['HEADLINE'], keep='first', inplace=True) # Deduplicate small file
+    print("Deduplication of individual file finished.")
     appended_data.append(data)
 
+print("Concatenate files...")
 df = pd.concat(appended_data)
+print("Files concatenated.")
+print("Size of original dataframe is: " + str(len(df)))
 df.drop_duplicates(subset=['HEADLINE'], keep='first', inplace=True) # Deduplicate big file
+print("Concatenated file deduplicated.")
 original_deduplicated_frame_size = len(df)
+print("Size of deduplicated dataframe is: " + str(original_deduplicated_frame_size))
+print("Writing initial dataframe to file...")
+df.to_parquet("headlines_not_filtered.parquet")
+print("Wrote to file.")
+
+print("Init ungrammatical quotes.")
 df = ungrammatical_quotes(df)
 print(len(df))
+
+print("Mostly numbers.")
 df = mostly_numbers(df)
 print(len(df))
+
+print("Too short.")
 df = too_short(df)
 print(len(df))
+
+print("Too long.")
 df = too_long(df)
 print(len(df))
+
+print("Tags.")
 df = tags(df)
 print(len(df))
+
+print("Forbidden words.")
 df = forbidden_words(df)
 print(len(df))
+
+print("Names.")
 df = names(df)
 print(len(df))
+
+print("Obituary.")
 df = obituary(df)
 print(len(df))
 
 df.to_parquet("headlines.parquet")
+
+print("Size of final frame: " + str(len(df)))
