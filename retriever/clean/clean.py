@@ -96,7 +96,7 @@ def forbidden_words(df):
 
 def tags(df):
     with open("removed_headlines.txt", "a") as f:
-        tag_like_chars = ["[", "]", "<", "/", "\\", ".se", ".com", ".nu", "@"]
+        tag_like_chars = ["[", "]", "<", "\\", ".se", ".com", ".nu", "@"]
         for index, row in df.iterrows(): # Find all tag-like headlines
             headline = str(row["HEADLINE"])
             if any(tag in headline.lower() for tag in tag_like_chars):
@@ -113,7 +113,7 @@ def too_long(df):
     with open("removed_headlines.txt", "a") as f:
         for index, row in df.iterrows(): 
             headline = str(row["HEADLINE"])
-            if len(headline.strip().split(' ')) > 15:
+            if len(headline.strip().split(' ')) > 30:
                 try:
                     df.drop(index, inplace=True)
                     s = "too long: " + headline + "\n"
@@ -126,7 +126,7 @@ def too_short(df):
     with open("removed_headlines.txt", "a") as f:
         for index, row in df.iterrows(): # Find all rows with less than three tokens that do not start with a capitalized letter
             headline = str(row["HEADLINE"])
-            if len(headline.strip().split(' ')):
+            if len(headline.strip().split(' ')) < 3:
                 if headline.strip().split(' ')[0].islower():
                     try:
                         df.drop(index, inplace=True)
@@ -219,13 +219,14 @@ df.drop_duplicates(subset=['HEADLINE'], keep='first', inplace=True) # Deduplicat
 print("Concatenated file deduplicated.")
 original_deduplicated_frame_size = len(df)
 print("Size of deduplicated dataframe is: " + str(original_deduplicated_frame_size))
-print("Writing initial dataframe to file...")
-df.to_parquet("headlines_not_filtered.parquet")
-print("Wrote to file.")
 
-print("Init ungrammatical quotes.")
-df = ungrammatical_quotes(df)
-print(len(df))
+#print("Writing initial dataframe to file...")
+#df.to_parquet("headlines_not_filtered.parquet")
+#print("Wrote to file.")
+
+#print("Init ungrammatical quotes.")
+#df = ungrammatical_quotes(df)
+#print(len(df))
 
 print("Mostly numbers.")
 df = mostly_numbers(df)
