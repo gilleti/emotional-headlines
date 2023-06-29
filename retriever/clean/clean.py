@@ -5,6 +5,11 @@ import re
 import warnings
 warnings.simplefilter("ignore")
 
+# This is a Retriever headline cleaning script.
+# It has lots of functions but few of them turned out to be needed for the actual data cleaning.
+# It is incredibly inefficient as researcher insisted on printing out all headlines that were filtered out. Apart from that, I also wanted researcher to able to understand it at a later point in time, so it is written to be explicit, not Pythonic.
+
+
 def is_dir(paths):
     dirs = []
     for path in paths:
@@ -192,9 +197,6 @@ def obituary(df):
     return df
 
 
-
-
-
 dir = "/home/hilhag/prjs/emotional-headlines/headlines/"
 paths = os.listdir(dir)
 dirs = is_dir(paths)
@@ -220,42 +222,5 @@ print("Concatenated file deduplicated.")
 original_deduplicated_frame_size = len(df)
 print("Size of deduplicated dataframe is: " + str(original_deduplicated_frame_size))
 
-#print("Writing initial dataframe to file...")
-#df.to_parquet("headlines_not_filtered.parquet")
-#print("Wrote to file.")
-
-#print("Init ungrammatical quotes.")
-#df = ungrammatical_quotes(df)
-#print(len(df))
-
-print("Mostly numbers.")
-df = mostly_numbers(df)
-print(len(df))
-
-print("Too short.")
-df = too_short(df)
-print(len(df))
-
-print("Too long.")
-df = too_long(df)
-print(len(df))
-
-print("Tags.")
-df = tags(df)
-print(len(df))
-
-print("Forbidden words.")
-df = forbidden_words(df)
-print(len(df))
-
-print("Names.")
-df = names(df)
-print(len(df))
-
-print("Obituary.")
-df = obituary(df)
-print(len(df))
-
 df.to_parquet("headlines.parquet")
-
 print("Size of final frame: " + str(len(df)))
