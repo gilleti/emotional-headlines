@@ -1,0 +1,1 @@
+This is an emotional classifier. It uses a few-shot approach based on [KbLab's zero-shot text classification model](https://kb-labb.github.io/posts/2023-02-12-zero-shot-text-classification/). It has been finetuned on basic emotions in news media headlines randomly sampled between 2000-2023. The training data has been manually annotated by psychologist Nora Hansson Bittàr.
